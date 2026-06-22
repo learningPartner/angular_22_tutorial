@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-3">
+        <input type="text" [formField]="employeeForm.empName" placeholder="Name">
+        @if(employeeForm.empName().touched()){
+        <div class="text-danger">
+            @for (item of employeeForm.empName().errors(); track $index) {
+            {{item.message}}
+            }
+        </div> 
+        }
+    </div>
+    <div class="col-3">
+        <input type="text" [formField]="employeeForm.empCity" placeholder="City">
+        @if(employeeForm.empCity().touched()){
+        <div class="text-danger">
+            @for (item of employeeForm.empCity().errors(); track $index) {
+            {{item.message}}
+            }
+        </div>
+        }
+    </div>
+    <div class="col-3">
+        <input type="text" [formField]="employeeForm.empState" placeholder="State">
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <button (click)="onSaveEmp()">Save</button>
+    </div>
+</div>

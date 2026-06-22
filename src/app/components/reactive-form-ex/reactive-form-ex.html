@@ -1,0 +1,74 @@
+<div class="container-fluid mt-1">
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header bg-primary">
+                    Customer List
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">User Registration Form</h4>
+                </div>
+
+                <div class="card-body">
+                    <form [formGroup]="userFrom">
+                        <div class="row"> 
+                            <div class="col-md-6 mb-3">
+                                <label for="userName" class="form-label">User Name</label>
+                                <input type="text" formControlName="userName" class="form-control" id="userName" name="userName"
+                                    placeholder="Enter user name" />
+                                    <div class="text-danger">
+                                        @if (userFrom.controls['userName'].errors?.['required']) {
+                                             <span>This is Required</span>
+                                        }
+                                        @if (userFrom.controls['userName'].errors?.['minlength']) {
+                                             <span>Min 4 Char Needed</span>
+                                        } 
+                                    </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="emailId" class="form-label">Email ID</label>
+                                <input type="email" formControlName="emailId" class="form-control" id="emailId" name="emailId"
+                                    placeholder="Enter email address" />
+                                    <div class="text-danger">
+                                        @if (userFrom.controls['emailId'].errors?.['required']) {
+                                             <span>This is Required</span>
+                                        }
+                                        @if (userFrom.controls['emailId'].errors?.['email']) {
+                                             <span>Email is Not Valid</span>
+                                        } 
+                                    </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" formControlName="fullName" class="form-control" id="fullName" name="fullName"
+                                    placeholder="Enter full name" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" formControlName="password" class="form-control" id="password" name="password"
+                                    placeholder="Enter password" />
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="button" [disabled]="userFrom.invalid" (click)="onSaveCustomer()" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

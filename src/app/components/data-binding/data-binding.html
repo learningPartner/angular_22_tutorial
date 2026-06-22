@@ -1,0 +1,67 @@
+<table>
+    <tr>
+        <td>
+            <input type="text" [(ngModel)]="productName">
+        </td>
+        <td>
+            <select [(ngModel)]="productName">
+                <option  >Mobile</option>
+                <option  >Laptop</option>
+                <option  >Headphone</option>
+                <option  >Charger</option>
+            </select>
+        </td>
+        <td>
+            <input type="checkbox" [(ngModel)]="isProductActive">
+        </td>
+        <td>
+            isProductActive = > {{isProductActive}}
+        </td>
+    </tr>
+</table>
+
+<hr>
+<hr>
+<table style="width: 100%;">
+    <tr>
+        <td>
+            {{productName}}
+        </td>
+        <td>
+            <span> {{productPrice}}</span>
+        </td>
+        <td>
+            <input type="text" value="{{productName}}">
+        </td>
+        <td>
+            <input type="text" [maxLength]="maxAlloowedChar">
+        </td>
+        <td>
+            <input type="text" [value]="productName">
+        </td>
+        <td>
+            <input type="{{myDynamicType}}">
+        </td>
+    </tr>
+</table>
+
+
+<table>
+    <tr>
+        <td>
+            <button (click)="showWelcomeText()"> Show Welcome</button>
+        </td>
+        <td>
+            <select (change)="onDropdownChange()">
+                <option  >Mobile</option>
+                <option  >Laptop</option>
+                <option  >Headphone</option>
+                <option  >Charger</option>
+            </select>
+        </td>
+    </tr>
+</table>
+
+<div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeft()" style="background-color: red;width: 100px;height: 100px;border-radius: 50px;">
+
+</div>
