@@ -31,7 +31,7 @@ export class Variables {
   employee: any = "Chetan";
 
   constructor(){
-    debugger;
+   
     console.log(this.studentName);
     console.log(this.studentList);
     console.log(this.studentList[1]);

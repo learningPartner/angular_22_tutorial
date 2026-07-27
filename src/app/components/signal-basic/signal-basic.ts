@@ -22,7 +22,7 @@ export class SignalBasic {
 
   constructor() {
     //  setTimeout(() => {
-    //   debugger;
+    //  
     //   this.employeeName = "Punam Sharma"
     //  }, 2000);
 

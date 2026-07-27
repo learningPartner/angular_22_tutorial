@@ -26,7 +26,7 @@ export class GetAPIEx {
   getAllUsers() {
     this.http.get("https://jsonplaceholder.typicode.com/users").subscribe({
       next:(res:any)=>{
-        debugger;
+       
         this.userList.set(res)
       },
       error:(erro:any)=>{

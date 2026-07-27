@@ -11,6 +11,7 @@ import { SignalFormEx } from './components/signal-form-ex/signal-form-ex';
 import { GetAPIEx } from './components/get-apiex/get-apiex';
 import { ClientCrud } from './components/client-crud/client-crud';
 import { PipeEx } from './components/pipe-ex/pipe-ex';
+import { LifeCycle } from './components/life-cycle/life-cycle';
  
 export const routes: Routes = [
     {
@@ -33,6 +34,10 @@ export const routes: Routes = [
     {
         path:'control-flow',
         component: ControlFlow
+    },
+    {
+        path:'lifecycle',
+        component: LifeCycle
     },
     {
         path:'template-form',

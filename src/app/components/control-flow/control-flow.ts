@@ -33,12 +33,12 @@ export class ControlFlow {
   formatCardNo: string = '';
   constructor() {
     this.formatCardNo =  this.masterSrv.getFormatedCardNo(this.originalCardNo)
-    debugger;
+   
   }
 
 
   storeLoggedData() {
-    debugger;
+   
     this.masterSrv.loggedUser = 'chetan_jogi'
   }
   toggleDiv1() {

@@ -35,7 +35,7 @@ export class PipeEx {
 
   constructor() {
    // this.capitalStudentName =  this.studentName.toUpperCase();
-    debugger;
+   
   }
 
 }

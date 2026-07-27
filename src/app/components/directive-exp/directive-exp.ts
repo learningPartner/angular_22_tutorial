@@ -40,7 +40,7 @@ export class DirectiveExp {
   }
 
   checkCharLength() {
-    debugger;
+   
     if (this.num1.length > 5) {
       this.isTextValid = true;
     } else {

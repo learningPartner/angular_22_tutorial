@@ -19,11 +19,11 @@ export class TemForm {
   };
 
   onSaveCompany(fromRef: NgForm) {
-    debugger;
+   
     if(fromRef.invalid) {
       alert("Provide All Required details")
       
-    debugger;
+   
     } else {
       confirm("Are you Sure Want to Save");
       const formValue = this.companyObj;

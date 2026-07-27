@@ -10,7 +10,7 @@ export class Master {
 
 
   getClients() {
-    debugger;
+   
     return this.http.get("https://api.freeprojectapi.com/api/SmartParking/GetAllClients")
   }
 
@@ -19,7 +19,7 @@ export class Master {
   }
 
   getFormatedCardNo(cardNo: string) {
-    debugger;
+   
     const astrticDat = '**** **** **';
     return astrticDat + ' ' + cardNo.substring(10);
   }
