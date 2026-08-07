@@ -1,1 +1,53 @@
-<p>life-cycle works!</p>
+
+<app-page-header [headerText]="'This is Page where we are going to see example of Lify Cycle Evnets'"
+ [headerTitle]="'Life Cycle Event'">
+</app-page-header>
+<div class="row">
+    <div class="col-3">
+        <input type="text" #temName placeholder="Enter Text" class="form-control">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-warning" (click)="readTextValue()">Read</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-4">
+        <h1 appHightlight  appCopyPaste [textColor]="'yellow'">This is h1</h1>
+    </div>
+     <div class="col-4">
+        <h2 appHightlight appCopyPaste [textColor]="'blue'">This is h2</h2>
+    </div>
+     <div class="col-4">
+        <h3 appHightlight appCopyPaste [textColor]="'green'">This is h3</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <input type="text" appNumbersOnly class="form-control">
+    </div>
+     <div class="col-4">
+         <input type="text" class="form-control">
+    </div>
+      
+</div>
+<div class="row">
+    <div class="col-4">
+        <div class="p-3" #div1Tem>
+            Div 11
+        </div>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-warning" (click)="addBgColor('red')">Add Red</button>
+         <button class="btn btn-warning" (click)="addBgColor('blue')">Add Blue</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+       
+    </div>
+    <div class="col-6">
+        <button class="btn btn-success" (click)="readPipeCom()"> Pipe Data</button>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Service } from '@angular/core';
+import { LoginModelAPI } from '../components/login/login';
 
 @Service()
 export class Master {
@@ -22,5 +23,9 @@ export class Master {
    
     const astrticDat = '**** **** **';
     return astrticDat + ' ' + cardNo.substring(10);
+  }
+
+  loginUser(obj: LoginModelAPI) {
+    return this.http.post("https://projectapi.gerasim.in/api/UserApp/login", obj)
   }
 }

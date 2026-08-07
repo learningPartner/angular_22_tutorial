@@ -12,63 +12,79 @@ import { GetAPIEx } from './components/get-apiex/get-apiex';
 import { ClientCrud } from './components/client-crud/client-crud';
 import { PipeEx } from './components/pipe-ex/pipe-ex';
 import { LifeCycle } from './components/life-cycle/life-cycle';
- 
+import { Login } from './components/login/login';
+import { Layout } from './components/layout/layout';
+import { authGuard } from './guards/auth-guard';
+
 export const routes: Routes = [
     {
-        path:'',
-        redirectTo: 'databinding',
-        pathMatch:'full'
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
     },
     {
-        path:'variables',
-        component:  Variables
-    }, 
-    {
-        path:'databinding',
-        component: DataBinding
+        path: 'login',
+        component: Login
     },
     {
-        path:'directives',
-        component: DirectiveExp
-    }, 
-    {
-        path:'control-flow',
-        component: ControlFlow
+        path: 'admin',
+        component: Layout,
+        children: [
+            {
+                path: 'variables',
+                component: Variables
+            },
+            {
+                path: 'databinding',
+                component: DataBinding,
+                canActivate: [authGuard]
+        
+            },
+            {
+                path: 'directives',
+                component: DirectiveExp
+            },
+            {
+                path: 'control-flow',
+                component: ControlFlow
+            },
+            {
+                path: 'lifecycle',
+                component: LifeCycle
+            },
+            {
+                path: 'template-form',
+                component: TemForm
+            },
+            {
+                path: 'clinets',
+                component: ClientCrud
+            },
+            {
+                path: 'get-api',
+                component: GetAPIEx
+            },
+            {
+                path: 'reactive-form',
+                component: ReactiveFormEx
+            },
+            {
+                path: 'signal-basic',
+                component: SignalBasic
+            },
+            {
+                path: 'signal-form',
+                component: SignalFormEx
+            },
+            {
+                path: 'pipe',
+                component: PipeEx
+            },
+        ]
     },
+
     {
-        path:'lifecycle',
-        component: LifeCycle
-    },
-    {
-        path:'template-form',
-        component: TemForm
-    },
-    {
-        path:'clinets',
-        component: ClientCrud
-    },
-    {
-        path:'get-api',
-        component: GetAPIEx
-    },
-    {
-        path:'reactive-form',
-        component: ReactiveFormEx
-    }, 
-    {
-        path:'signal-basic',
-        component: SignalBasic
-    }, 
-     {
-        path:'signal-form',
-        component: SignalFormEx
-    }, 
-    {
-        path:'pipe',
-        component: PipeEx
-    }, 
-    {
-        path:'**',
-        component:NotFound
+        path: '**',
+        component: NotFound
     }
 ];

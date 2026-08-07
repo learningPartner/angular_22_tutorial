@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './data-binding.css',
 })
 
-export class DataBinding {
+export class DataBinding  implements OnInit{
 
   productName: string = "Headphone"
   productPrice = 1200;
@@ -18,6 +19,19 @@ export class DataBinding {
 
   myDynamicType = 'button';
 
+  http = inject(HttpClient);
+  userList =  signal<any>([]);
+
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
+  getAllUsers() {
+    this.http.get("https://projectapi.gerasim.in/api/UserApp/GetAllUsers").subscribe({
+      next:(res:any)=>{
+        this.userList =  res.data;
+      }
+    })
+  }
   showWelcomeText() {
     alert("Welcome v22")
   }

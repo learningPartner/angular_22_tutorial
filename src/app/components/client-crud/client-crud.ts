@@ -2,10 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Master } from '../../services/master';
+import { PageHeader } from "../../resuables/page-header/page-header";
+import { Card } from "../../resuables/card/card";
+import { MyButton } from "../../resuables/my-button/my-button";
 
 @Component({
   selector: 'app-client-crud',
-  imports: [FormsModule],
+  imports: [FormsModule, PageHeader, Card, MyButton],
   templateUrl: './client-crud.html',
   styleUrl: './client-crud.css',
 })
