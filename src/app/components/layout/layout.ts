@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-layout',
@@ -11,6 +12,7 @@ export class Layout {
 
   loggedUserEmail: string = '';
   router = inject(Router);
+  masteService = inject(Master);
 
   constructor() {
     debugger;
@@ -23,5 +25,12 @@ export class Layout {
   onLogOff() {
     localStorage.removeItem("angular22User");
     this.router.navigateByUrl("/login")
+  }
+
+  onRoleChnages(event:any) {
+    debugger;
+    const role=  event.target.value;
+    this.masteService.$selectedRole.next(role);
+    this.masteService.$selectedRoleBehaviourSub.next(role);
   }
 }

@@ -1,10 +1,11 @@
 import { NgClass } from '@angular/common';
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PipeEx } from "../pipe-ex/pipe-ex";
 import { PageHeader } from "../../resuables/page-header/page-header";
 import { Hightlight } from '../../customDirectives/hightlight';
 import { CopyPaste } from '../../customDirectives/copy-paste';
 import { NumbersOnly } from '../../customDirectives/numbers-only';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-life-cycle',
@@ -18,9 +19,20 @@ export class LifeCycle  implements OnInit, AfterContentInit,AfterContentChecked,
   @ViewChild('div1Tem') div1Element!: ElementRef;
 
   @ViewChild(PipeEx) pipeCompInstance!: PipeEx;
+  masterService=  inject(Master);
 
   constructor() {
-    console.log("constructor Execiuted")
+    console.log("constructor Execiuted");
+    this.masterService.$selectedRole.subscribe({
+      next:(rrole:string)=>{
+        debugger;
+      }
+    })
+     this.masterService.$selectedRoleBehaviourSub.subscribe({
+      next:(rrole:string)=>{
+        debugger;
+      }
+    })
   }
 
   readPipeCom() {

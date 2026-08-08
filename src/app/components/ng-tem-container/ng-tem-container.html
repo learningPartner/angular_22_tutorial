@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-6">
+        <ul>
+            <ng-container *ngFor="let item of studentList">
+                <li *ngIf="item.isActive == true">
+                    {{item.name}} -- {{item.rollNo}}
+                </li>
+            </ng-container> 
+        </ul>
+    </div>
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let item of studentList">
+                <span *ngIf="item.isActive else temDeactive"> Active - {{item.name}}</span> 
+            </li>
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-4">
+        <div *ngTemplateOutlet="temUserName"> </div>
+    </div>
+    <div class="col-4">
+        <span *ngTemplateOutlet="temUserName"></span>
+    </div>
+    <div class="col-4">
+        <ng-container *ngTemplateOutlet="temUserName"> </ng-container>
+    </div>
+</div>
+
+<ng-template #temDeactive>
+    <span class="text-danger">Student Is De-Active </span>
+</ng-template>
+
+<ng-template #temUserName>
+    <strong class="text-danger">Logged User: {{loggedUSerName}}</strong>
+</ng-template>
+
+<div class="row">
+    <div class="col-6">
+        <ng-container *ngTemplateOutlet="myLable, context:{iconClass:'fa fa-user', text:'Enter Name',toolTipText:'Enter Valid Name'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+     <div class="col-4">
+         <ng-container *ngTemplateOutlet="myLable, context:{iconClass:'fa fa-phone', text:'Enter Mobile'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+     <div class="col-6">
+          <ng-container *ngTemplateOutlet="myLable, context:{iconClass:'fa fa-user', text:'Enter City'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+     <div class="col-4">
+          <ng-container *ngTemplateOutlet="myLable, context:{iconClass:'fa fa-user', text:'Enter State'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+     <div class="col-4">
+          <ng-container *ngTemplateOutlet="myLable, context:{iconClass:'fa fa-user', text:'Enter Pincode'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+</div>
+
+<ng-template #myLable let-icon="iconClass" let-labelText="text" let-tooltip="toolTipText">
+     <label for="" title="{{tooltip}}" > <i [class]="icon"> </i>{{labelText}}</label>
+</ng-template>

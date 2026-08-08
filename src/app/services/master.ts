@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Service } from '@angular/core';
 import { LoginModelAPI } from '../components/login/login';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Service()
 export class Master {
@@ -8,6 +9,10 @@ export class Master {
   loggedUser: string = '';
 
   http = inject(HttpClient);
+
+  $selectedRole : Subject<string> = new Subject<string>();
+  
+  $selectedRoleBehaviourSub : BehaviorSubject<string> = new BehaviorSubject<string>("");
 
 
   getClients() {

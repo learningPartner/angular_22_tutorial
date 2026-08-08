@@ -39,8 +39,15 @@
          <li class="nav-item" >
           <a class="nav-link"  routerLinkActive="active" routerLink="/admin/lifecycle">lifecycle</a>
         </li>
+         <li class="nav-item" >
+          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/ng-tem-container">template-container</a>
+        </li>
       </ul>
       <form class="d-flex">
+        <select name="" id="" (change)="onRoleChnages($event)">
+          <option value="Admin">Admin</option>
+            <option value="Guest">Guest</option>
+        </select>
          <button class="btn btn-secondary text-white">{{loggedUserEmail}}</button>
         <button class="btn btn-primary" type="button" (click)="onLogOff()">Log Off</button>
       </form>

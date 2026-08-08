@@ -15,6 +15,8 @@ import { LifeCycle } from './components/life-cycle/life-cycle';
 import { Login } from './components/login/login';
 import { Layout } from './components/layout/layout';
 import { authGuard } from './guards/auth-guard';
+import { NgTemContainer } from './components/ng-tem-container/ng-tem-container';
+import { RxjsEx } from './components/rxjs-ex/rxjs-ex';
 
 export const routes: Routes = [
     {
@@ -43,6 +45,14 @@ export const routes: Routes = [
             {
                 path: 'directives',
                 component: DirectiveExp
+            },
+             {
+                path: 'ng-tem-container',
+                component: NgTemContainer
+            },
+             {
+                path: 'rxjs-ex',
+                component: RxjsEx
             },
             {
                 path: 'control-flow',
