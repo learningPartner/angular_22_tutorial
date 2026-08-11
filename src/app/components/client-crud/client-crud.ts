@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Master } from '../../services/master';
-import { PageHeader } from "../../resuables/page-header/page-header";
-import { Card } from "../../resuables/card/card";
-import { MyButton } from "../../resuables/my-button/my-button";
+import { PageHeader } from '../../resuables/page-header/page-header';
+import { Card } from '../../resuables/card/card';
+import { MyButton } from '../../resuables/my-button/my-button';
+import { ClientFacade } from '../../facade/client-facade';
 
 @Component({
   selector: 'app-client-crud',
@@ -15,7 +16,6 @@ import { MyButton } from "../../resuables/my-button/my-button";
 export class ClientCrud {
   http = inject(HttpClient);
   clinetList: WritableSignal<any[]> = signal([]);
-
   newClientObj: any = {
     clientId: 0,
     clientName: '',
@@ -27,54 +27,26 @@ export class ClientCrud {
     createdDate: new Date(),
     logo: 'string',
   };
-
   formateCardNoi = '';
-  constructor(private masterSrv: Master) {
+
+  constructor(private clientFacade: ClientFacade) {
     this.getAllClients();
-   
-    this.formateCardNoi = this.masterSrv.getFormatedCardNo('1122334466558899');
-    const loogedUserName = this.masterSrv.loggedUser;
+    this.formateCardNoi = this.clientFacade.getFormatedCardNo('1122334466558899');
   }
 
-  // getAllClients() {
-  //   this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
-  //     next: (response: any) => {
-  //       this.clinetList.set(response.data);
-  //     },
-  //   });
-  // }
-
   getAllClients() {
-   
-    this.masterSrv.getClients().subscribe({
+     debugger;
+    this.clientFacade.loadClients().subscribe({
       next: (res: any) => {
-       
+         debugger;
         this.clinetList.set(res.data);
       },
     });
   }
 
-  // onSaveClient() {
-  //  
-  //   this.http
-  //     .post('https://api.freeprojectapi.com/api/SmartParking/addclient', this.newClientObj)
-  //     .subscribe({
-  //       next: (res: any) => {
-  //        
-  //         if (res.result) {
-  //           alert('Client Created Success');
-  //           this.getAllClients();
-  //         } else {
-  //           alert(res.meessage);
-  //         }
-  //       },
-  //     });
-  // }
-
   onSaveClient() {
-    this.masterSrv.saveClient(this.newClientObj).subscribe({
+    this.clientFacade.saveClient(this.newClientObj).subscribe({
       next: (res: any) => {
-       
         if (res.result) {
           alert('Client Created Success');
           this.getAllClients();
@@ -90,7 +62,6 @@ export class ClientCrud {
       .post('https://api.freeprojectapi.com/api/SmartParking/updateclient', this.newClientObj)
       .subscribe({
         next: (res: any) => {
-         
           if (res.result) {
             alert('Client Updated Success');
             this.getAllClients();
@@ -108,7 +79,6 @@ export class ClientCrud {
         .post('https://api.freeprojectapi.com/api/SmartParking/DeleteClient?id=' + id, {})
         .subscribe({
           next: (res: any) => {
-           
             if (res.result) {
               alert('Client Delet Success');
               this.getAllClients();

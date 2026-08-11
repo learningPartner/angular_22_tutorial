@@ -6,17 +6,14 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Service()
 export class Master {
     
-  loggedUser: string = '';
-
-  http = inject(HttpClient);
-
-  $selectedRole : Subject<string> = new Subject<string>();
-  
+  loggedUser: string = '';  
+  $selectedRole : Subject<string> = new Subject<string>(); 
   $selectedRoleBehaviourSub : BehaviorSubject<string> = new BehaviorSubject<string>("");
+  http = inject(HttpClient); 
 
 
-  getClients() {
-   
+  getClients() { 
+     debugger;
     return this.http.get("https://api.freeprojectapi.com/api/SmartParking/GetAllClients")
   }
 
@@ -24,8 +21,7 @@ export class Master {
     return this.http.post("https://api.freeprojectapi.com/api/SmartParking/addclient",obj)
   }
 
-  getFormatedCardNo(cardNo: string) {
-   
+  getFormatedCardNo(cardNo: string) { 
     const astrticDat = '**** **** **';
     return astrticDat + ' ' + cardNo.substring(10);
   }
