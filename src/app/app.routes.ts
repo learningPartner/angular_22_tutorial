@@ -17,7 +17,7 @@ import { Layout } from './components/layout/layout';
 import { authGuard } from './guards/auth-guard';
 import { NgTemContainer } from './components/ng-tem-container/ng-tem-container';
 import { RxjsEx } from './components/rxjs-ex/rxjs-ex';
-
+ 
 export const routes: Routes = [
     {
         path: '',
@@ -92,6 +92,8 @@ export const routes: Routes = [
                 path: 'pipe',
                 component: PipeEx
             },
+           
+
         ]
     },
 
