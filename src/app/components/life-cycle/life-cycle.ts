@@ -1,97 +1,177 @@
-import { NgClass } from '@angular/common';
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgClass } from "@angular/common";
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { PipeEx } from "../pipe-ex/pipe-ex";
 import { PageHeader } from "../../resuables/page-header/page-header";
-import { Hightlight } from '../../customDirectives/hightlight';
-import { CopyPaste } from '../../customDirectives/copy-paste';
-import { NumbersOnly } from '../../customDirectives/numbers-only';
-import { Master } from '../../services/master';
+import { Hightlight } from "../../customDirectives/hightlight";
+import { CopyPaste } from "../../customDirectives/copy-paste";
+import { NumbersOnly } from "../../customDirectives/numbers-only";
+import { Master } from "../../services/master";
 
 @Component({
-  selector: 'app-life-cycle',
-  imports: [PipeEx, PageHeader,CopyPaste, Hightlight, NumbersOnly],
-  templateUrl: './life-cycle.html',
-  styleUrl: './life-cycle.css',
+  selector:
+    "app-life-cycle",
+  imports: [
+    PipeEx,
+    PageHeader,
+    CopyPaste,
+    Hightlight,
+    NumbersOnly,
+  ],
+  templateUrl:
+    "./life-cycle.html",
+  styleUrl:
+    "./life-cycle.css",
 })
-export class LifeCycle  implements OnInit, AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,DoCheck,OnDestroy{
+export class LifeCycle
+  implements
+    OnInit,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked,
+    DoCheck,
+    OnDestroy
+{
+  @ViewChild(
+    "temName",
+  )
+  textRef!: ElementRef;
+  @ViewChild(
+    "div1Tem",
+  )
+  div1Element!: ElementRef;
 
-  @ViewChild('temName') textRef!: ElementRef;
-  @ViewChild('div1Tem') div1Element!: ElementRef;
-
-  @ViewChild(PipeEx) pipeCompInstance!: PipeEx;
-  masterService=  inject(Master);
+  @ViewChild(PipeEx)
+  pipeCompInstance!: PipeEx;
+  masterService =
+    inject(Master);
 
   constructor() {
-    console.log("constructor Execiuted");
-    this.masterService.$selectedRole.subscribe({
-      next:(rrole:string)=>{
-        debugger;
-      }
-    })
-     this.masterService.$selectedRoleBehaviourSub.subscribe({
-      next:(rrole:string)=>{
-        debugger;
-      }
-    })
+    console.log(
+      "constructor Execiuted",
+    );
+    this.masterService.$selectedRole.subscribe(
+      {
+        next: (
+          rrole: string,
+        ) => {
+          debugger;
+        },
+      },
+    );
+    this.masterService.$selectedRoleBehaviourSub.subscribe(
+      {
+        next: (
+          rrole: string,
+        ) => {
+          debugger;
+        },
+      },
+    );
   }
 
   readPipeCom() {
     debugger;
-    if(this.pipeCompInstance) {
-      const data =  this.pipeCompInstance.curentDate;
+    if (
+      this
+        .pipeCompInstance
+    ) {
+      const data =
+        this
+          .pipeCompInstance
+          .curentDate;
     }
   }
 
   readTextValue() {
     debugger;
-    if(this.textRef) {
-      const value =  this.textRef.nativeElement.value;
-      alert(value)
+    if (
+      this.textRef
+    ) {
+      const value =
+        this.textRef
+          .nativeElement
+          .value;
+      alert(value);
     }
   }
 
-  addBgColor(color: string) {
-    if(this.div1Element) {
-      this.div1Element.nativeElement.style.backgroundColor = color;
+  addBgColor(
+    color: string,
+  ) {
+    if (
+      this
+        .div1Element
+    ) {
+      this.div1Element.nativeElement.style.backgroundColor =
+        color;
     }
   }
 
   ngOnInit(): void {
     //api call trigeer
     //subscription
-  
-    console.log("ngOnInit Execiuted")
+
+    console.log(
+      "ngOnInit Execiuted",
+    );
   }
 
   ngAfterContentInit(): void {
-     console.log("ngAfterContentInit Execiuted")
+    console.log(
+      "ngAfterContentInit Execiuted",
+    );
   }
 
   ngAfterContentChecked(): void {
-     console.log("ngAfterContentChecked Execiuted")
+    console.log(
+      "ngAfterContentChecked Execiuted",
+    );
   }
 
   ngAfterViewInit(): void {
     //viewchild
-      if(this.textRef) {
-      this.textRef.nativeElement.value = "React Js"
+    if (
+      this.textRef
+    ) {
+      this.textRef.nativeElement.value =
+        "React Js";
     }
-     console.log("ngAfterViewInit Execiuted")
+    console.log(
+      "ngAfterViewInit Execiuted",
+    );
   }
 
   ngAfterViewChecked(): void {
-     console.log("ngAfterViewChecked Execiuted")
+    console.log(
+      "ngAfterViewChecked Execiuted",
+    );
   }
 
   ngDoCheck(): void {
     //chnage detection
-     console.log("ngDoCheck Execiuted")
+    console.log(
+      "ngDoCheck Execiuted",
+    );
   }
 
   ngOnDestroy(): void {
-    //clean acitity 
+    //clean acitity
     //unscrib
-     console.log("ngOnDestroy Execiuted")
+    console.log(
+      "ngOnDestroy Execiuted",
+    );
   }
-
 }

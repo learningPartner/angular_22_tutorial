@@ -1,18 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, signal, ViewEncapsulation, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Master } from '../../services/master';
 import { PageHeader } from '../../resuables/page-header/page-header';
 import { Card } from '../../resuables/card/card';
 import { MyButton } from '../../resuables/my-button/my-button';
 import { ClientFacade } from '../../facade/client-facade';
+import { CardNoFormatterPipe } from '../../pipes/card-no-formatter-pipe';
+import { LifeCycle } from '../life-cycle/life-cycle';
 
 @Component({
   selector: 'app-client-crud',
-  imports: [FormsModule, PageHeader, Card, MyButton],
+  imports: [FormsModule, PageHeader, Card, MyButton, LifeCycle],
   templateUrl: './client-crud.html',
-  styleUrl: './client-crud.css',
+  styleUrl: './client-crud.css' 
 })
+
 export class ClientCrud {
   http = inject(HttpClient);
   clinetList: WritableSignal<any[]> = signal([]);
@@ -29,9 +32,15 @@ export class ClientCrud {
   };
   formateCardNoi = '';
 
-  constructor(private clientFacade: ClientFacade) {
+  creditCardNo: string = "1111222233335656";
+
+  constructor(private clientFacade: ClientFacade,) {
     this.getAllClients();
     this.formateCardNoi = this.clientFacade.getFormatedCardNo('1122334466558899');
+ debugger;
+     const formaterPipe = new CardNoFormatterPipe() ;
+    const formtCardNo =  formaterPipe.transform(this.creditCardNo);
+    debugger;
   }
 
   getAllClients() {

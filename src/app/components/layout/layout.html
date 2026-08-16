@@ -21,40 +21,54 @@
          <li class="nav-item" >
           <a class="nav-link"  routerLinkActive="active" routerLink="template-form">Template</a>
         </li>  -->
-         <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/reactive-form">Reactive</a>
-        </li> 
-         <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="s/admin/ignal-basic">Signal</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/reactive-form">Reactive</a>
         </li>
-         <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/signal-form">Signal Form</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="s/admin/ignal-basic">Signal</a>
         </li>
-        <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/get-api">Get API</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/signal-form">Signal Form</a>
         </li>
-         <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/clinets">clinets</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="[{outlets:{royter2: ['get-api']}}]"  >Get API</a>
         </li>
-         <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/lifecycle">lifecycle</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/clinets">clinets</a>
         </li>
-         <li class="nav-item" >
-          <a class="nav-link"  routerLinkActive="active" routerLink="/admin/ng-tem-container">template-container</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/lifecycle">lifecycle</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/ng-tem-container">template-container</a>
         </li>
       </ul>
       <form class="d-flex">
         <select name="" id="" (change)="onRoleChnages($event)">
           <option value="Admin">Admin</option>
-            <option value="Guest">Guest</option>
+          <option value="Guest">Guest</option>
         </select>
-         <button class="btn btn-secondary text-white">{{loggedUserEmail}}</button>
+        <button class="btn btn-secondary text-white">{{loggedUserEmail}}</button>
         <button class="btn btn-primary" type="button" (click)="onLogOff()">Log Off</button>
       </form>
     </div>
   </div>
 </nav>
+<!-- <div class="row">
+  <div class="col-6">
+    <div class="container-fluid">
+      <router-outlet name="royter1"></router-outlet>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="container-fluid">
+      <router-outlet  name="royter2"></router-outlet>
+    </div>
+  </div>
+</div> -->
+ <div class="container-fluid">
+      <router-outlet ></router-outlet>
+    </div>
 
-<div class="container-fluid">
-  <router-outlet></router-outlet>
-</div>
+
+<hr>

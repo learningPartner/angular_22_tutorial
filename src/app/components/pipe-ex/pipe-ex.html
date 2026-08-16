@@ -76,11 +76,20 @@
 <hr>
 <div class="row">
     <div class="col-3">
-        {{'1111222233335656' | cardNoFormatter}}
+        {{'1111222233335656' | cardNoFormatter | uppercase}}
     </div>
     <div class="col-3">
        {{cardNo | cardNoFormatter}}
     </div>
+    <div class="col-3">
+        {{courserName}}
+        **courserName**
+    </div>
+    <div class="col-3">
+        <button (click)="changeCOurse()">Chnage Text</button>
+    </div>
 </div>
 <hr>
+
+<app-user-card [cardHeader]="'Text Header '"></app-user-card>
 

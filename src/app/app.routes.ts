@@ -68,11 +68,13 @@ export const routes: Routes = [
             },
             {
                 path: 'clinets',
-                component: ClientCrud
+                component: ClientCrud,
+                outlet:'royter1'
             },
             {
                 path: 'get-api',
-                component: GetAPIEx
+                component: GetAPIEx,
+                outlet:'royter2'
             },
             {
                 path: 'reactive-form',
