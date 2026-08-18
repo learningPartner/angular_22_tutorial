@@ -1,0 +1,39 @@
+.employee-list-wrapper {
+  background: #f8f9fa;
+}
+
+.employee-grid {
+  min-height: 100%;
+}
+
+.employee-card {
+  border-radius: 0.75rem;
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 135px;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.employee-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.employee-meta {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+@media (max-width: 575.98px) {
+  .employee-card {
+    min-height: 120px;
+  }
+}

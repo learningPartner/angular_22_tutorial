@@ -17,6 +17,10 @@ import { Layout } from './components/layout/layout';
 import { authGuard } from './guards/auth-guard';
 import { NgTemContainer } from './components/ng-tem-container/ng-tem-container';
 import { RxjsEx } from './components/rxjs-ex/rxjs-ex';
+import { EmpLayout } from './components/employeeList/emp-layout/emp-layout';
+import { EmpList } from './components/employeeList/emp-list/emp-list';
+import { EmpDetails } from './components/employeeList/emp-details/emp-details';
+import { DynamicForm } from './components/dynamic-form/dynamic-form';
  
 export const routes: Routes = [
     {
@@ -92,13 +96,36 @@ export const routes: Routes = [
                 path: 'pipe',
                 component: PipeEx
             },
+             {
+                path: 'dynamic-form',
+                component: DynamicForm
+            },
+            {
+                path:'employee',
+                component: EmpLayout,
+                children: [
+                     {
+                        path:'',
+                        component: EmpList,
+                        outlet: 'listOutlet'
+                     },
+                     {
+                        path:'detail',
+                        component: EmpDetails,
+                        outlet:'detailOutlet'
+                     },
+                     {
+                         path:'detail/:id',
+                        component: EmpDetails,
+                        outlet:'detailOutlet'
+                     }
+                    
+                ]
+            }
            
 
         ]
     },
 
-    {
-        path: '**',
-        component: NotFound
-    }
+    
 ];
