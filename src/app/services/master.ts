@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Service } from '@angular/core';
 import { LoginModelAPI } from '../components/login/login';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, map, Subject } from 'rxjs';
+import { CommentDTO } from '../models/user.model';
+import { toUserMapping } from '../helper/common.helper';
 
 @Service()
 export class Master {
@@ -11,6 +13,13 @@ export class Master {
   $selectedRoleBehaviourSub : BehaviorSubject<string> = new BehaviorSubject<string>("");
   http = inject(HttpClient); 
 
+
+  getComments() {
+      debugger;
+    return this.http.get<CommentDTO[]>("https://jsonplaceholder.typicode.com/comments").pipe(
+      map((dtoList: CommentDTO[]) => dtoList.map(toUserMapping))
+    )
+  }
 
   getClients() { 
      debugger;

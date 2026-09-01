@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { getFormatedCardNo } from '../../helper/common.helper';
+import { Master } from '../../services/master';
+import { IComment } from '../../models/user.model';
 
 @Component({
   selector: 'app-variables',
@@ -30,8 +33,19 @@ export class Variables {
 
   employee: any = "Chetan";
 
+  creditCardNo: string = "1111222233335656";
+
+  masterService =  inject(Master);
+
   constructor(){
-   
+    debugger;
+    this.masterService.getComments().subscribe({
+      next:(res:IComment[]) =>{
+        debugger;
+      }
+    })
+    debugger;
+    const carNo =  getFormatedCardNo(this.creditCardNo);
     console.log(this.studentName);
     console.log(this.studentList);
     console.log(this.studentList[1]);
