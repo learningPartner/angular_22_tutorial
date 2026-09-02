@@ -13,12 +13,26 @@ export class Master {
   $selectedRoleBehaviourSub : BehaviorSubject<string> = new BehaviorSubject<string>("");
   http = inject(HttpClient); 
 
+  readonly appVersionName: string = 'v_001';
+
 
   getComments() {
       debugger;
     return this.http.get<CommentDTO[]>("https://jsonplaceholder.typicode.com/comments").pipe(
       map((dtoList: CommentDTO[]) => dtoList.map(toUserMapping))
     )
+  }
+
+  // getArrayLength(array: number[]) {
+
+  // }
+
+  getArrayLength<T>(data: T[]) {
+    if(data.length ==0) {
+      return false;
+    } else {
+      return data.length;
+    } 
   }
 
   getClients() { 

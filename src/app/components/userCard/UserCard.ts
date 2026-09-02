@@ -1,4 +1,5 @@
 import { Component, input } from "@angular/core";
+import { IEmployee } from "../../models/Employee.model";
 
 @Component({
   selector: "app-user-card",
@@ -11,4 +12,11 @@ import { Component, input } from "@angular/core";
 })
 export class UserCard {
   cardHeader = input<string>("");
+
+  // empo: IEmployee = {
+  //   empId: 0,
+  //   empName:'',
+  //   isActive: false,
+  //   skills: []
+  // }
 }

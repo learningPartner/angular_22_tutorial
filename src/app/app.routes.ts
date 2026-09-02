@@ -21,6 +21,7 @@ import { EmpLayout } from './components/employeeList/emp-layout/emp-layout';
 import { EmpList } from './components/employeeList/emp-list/emp-list';
 import { EmpDetails } from './components/employeeList/emp-details/emp-details';
 import { DynamicForm } from './components/dynamic-form/dynamic-form';
+import { TypeScriptInterview } from './components/type-script-interview/type-script-interview';
  
 export const routes: Routes = [
     {
@@ -58,6 +59,11 @@ export const routes: Routes = [
                 path: 'rxjs-ex',
                 component: RxjsEx
             },
+{
+                path: 'TypeScriptInterview',
+                component: TypeScriptInterview
+            },
+            
             {
                 path: 'control-flow',
                 component: ControlFlow
